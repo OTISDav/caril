@@ -1,0 +1,321 @@
+/* ============================================
+   NAVBAR — ARCHI·REFLEX
+   Style: Luxury Editorial
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --cream: #F5F0E8;
+  --black: #0D0D0D;
+  --stone: #8C8070;
+  --warm: #C9A96E;
+  --light: #E8E2D6;
+  --navbar-height: 72px;
+}
+
+/* ============================================
+   BASE NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--navbar-height);
+  padding: 0 4vw;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(245, 240, 232, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(140, 128, 112, 0.2);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+.navbar-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 1.35rem;
+  letter-spacing: 0.3em;
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+.navbar-logo:hover {
+  color: var(--stone);
+}
+
+.logo-accent {
+  color: var(--warm);
+  font-style: italic;
+}
+
+/* ============================================
+   DESKTOP LINKS
+   ============================================ */
+.nav-links.desktop {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-link {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.nav-link .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--warm);
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-link:hover .underline,
+.nav-link.active .underline {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--warm);
+}
+
+/* ============================================
+   CTA BUTTON
+   ============================================ */
+.nav-cta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--black);
+  padding: 10px 22px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.nav-cta:hover {
+  background: var(--warm);
+  color: var(--black);
+  transform: translateY(-1px);
+}
+
+.nav-cta.desktop {
+  display: block;
+}
+
+/* ============================================
+   HAMBURGER
+   ============================================ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--black);
+  transition: transform 0.35s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.35s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ============================================
+   MOBILE OVERLAY
+   ============================================ */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 13, 13, 0.5);
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ============================================
+   MOBILE SLIDE MENU
+   ============================================ */
+.mobile-slide-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(360px, 85vw);
+  height: 100vh;
+  background: var(--black);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  transition: right 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  overflow-y: auto;
+}
+
+.mobile-slide-menu.open {
+  right: 0;
+}
+
+.mobile-menu-close {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--cream);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+  margin-bottom: 3rem;
+}
+
+.mobile-menu-close:hover {
+  border-color: var(--warm);
+  color: var(--warm);
+}
+
+.mobile-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  color: rgba(245, 240, 232, 0.3);
+  margin-bottom: 3rem;
+}
+
+.mobile-logo span {
+  color: var(--warm);
+  font-style: italic;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.mobile-nav-link {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  letter-spacing: 0.05em;
+  transition: color 0.3s, padding-left 0.3s;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--warm);
+  font-style: italic;
+  padding-left: 0.5rem;
+}
+
+.mobile-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobile-footer span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: rgba(245, 240, 232, 0.3);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .nav-links.desktop,
+  .nav-cta.desktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 5vw;
+  }
+
+  .navbar-logo {
+    font-size: 1.1rem;
+  }
+}

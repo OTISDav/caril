@@ -1,0 +1,176 @@
+/* ============================================
+   FOOTER — ARCHI·REFLEX
+   Style: Luxury Editorial
+   ============================================ */
+
+.footer {
+  background: #0D0D0D;
+  color: #F5F0E8;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ============================================
+   BRAND BAR
+   ============================================ */
+.footer-brand-bar {
+  padding: 6vh 6vw 5vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: baseline;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0.3em;
+  color: #F5F0E8;
+  white-space: nowrap;
+}
+
+.footer-logo-accent {
+  color: #C9A96E;
+  font-style: italic;
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: rgba(245, 240, 232, 0.35);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   INNER GRID
+   ============================================ */
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4vw;
+  padding: 6vh 6vw;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-block-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 0.6rem;
+}
+
+.footer-block p,
+.footer-block a {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.55);
+  text-decoration: none;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+}
+
+.footer-block a:hover {
+  color: #C9A96E;
+}
+
+/* ============================================
+   BOTTOM BAR
+   ============================================ */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 3vh 6vw;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.25);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+  color: rgba(245, 240, 232, 0.7);
+}
+
+.footer-sep {
+  color: rgba(245, 240, 232, 0.12);
+  font-size: 0.6rem;
+}
+
+.footer-credit {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.2);
+}
+
+.footer-heart {
+  color: #C9A96E;
+}
+
+.footer-author {
+  color: rgba(245, 240, 232, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+.footer-copy {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: rgba(245, 240, 232, 0.15);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 6vw;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-brand-bar {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

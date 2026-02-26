@@ -1,0 +1,77 @@
+// src/data/mockProjects.js
+// Images fictives pour le développement — remplacer par l'API en production
+
+export const mockProjects = [
+  {
+    id: 1,
+    title: "Villa Lumière",
+    category: "Résidentiel",
+    location: "Lomé, Togo",
+    year: "2023",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80",
+  },
+  {
+    id: 2,
+    title: "Siège Social N&Co",
+    category: "Commercial",
+    location: "Abidjan, Côte d'Ivoire",
+    year: "2022",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80",
+  },
+  {
+    id: 3,
+    title: "Résidence Harmonie",
+    category: "Résidentiel",
+    location: "Cotonou, Bénin",
+    year: "2023",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=80",
+  },
+  {
+    id: 4,
+    title: "Centre Culturel Kara",
+    category: "Urbanisme",
+    location: "Kara, Togo",
+    year: "2021",
+    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=900&q=80",
+  },
+  {
+    id: 5,
+    title: "Appartement Panorama",
+    category: "Rénovation",
+    location: "Lomé, Togo",
+    year: "2022",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80",
+  },
+  {
+    id: 6,
+    title: "Hôtel Savane",
+    category: "Commercial",
+    location: "Sokodé, Togo",
+    year: "2023",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=80",
+  },
+  {
+    id: 7,
+    title: "Maison Bois & Pierre",
+    category: "Résidentiel",
+    location: "Accra, Ghana",
+    year: "2024",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80",
+  },
+  {
+    id: 8,
+    title: "Place du Marché",
+    category: "Urbanisme",
+    location: "Lomé, Togo",
+    year: "2021",
+    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=80",
+  },
+  {
+    id: 9,
+    title: "Loft Industriel",
+    category: "Rénovation",
+    location: "Dakar, Sénégal",
+    year: "2022",
+    image: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=900&q=80",
+  },
+];

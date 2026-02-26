@@ -1,0 +1,275 @@
+/* ============================================
+   ABOUT — ARCHI·REFLEX
+   Style: Luxury Editorial
+   ============================================ */
+
+.about {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #F5F0E8;
+}
+
+/* ============================================
+   IMAGE GAUCHE
+   ============================================ */
+.about-image {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1000&q=80")
+    center / cover no-repeat;
+  min-height: 600px;
+}
+
+.about-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(13, 13, 13, 0.15) 0%,
+    rgba(13, 13, 13, 0.45) 100%
+  );
+}
+
+/* Tag flottant sur l'image */
+.about-image-tag {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 2px solid #C9A96E;
+  padding-left: 1rem;
+}
+
+.about-image-tag-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #F5F0E8;
+  letter-spacing: 0.05em;
+}
+
+.about-image-tag-city {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.6);
+}
+
+/* ============================================
+   WATERMARK
+   ============================================ */
+.about-watermark {
+  position: absolute;
+  bottom: -0.1em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(5rem, 12vw, 11rem);
+  letter-spacing: 0.15em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(140, 128, 112, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ============================================
+   PANEL DROIT
+   ============================================ */
+.about-panel {
+  position: relative;
+  z-index: 1;
+  padding: clamp(3rem, 7vh, 6rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.about-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.about-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  letter-spacing: 0.25em;
+  color: #0D0D0D;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.about-title-accent {
+  color: #C9A96E;
+  font-style: italic;
+}
+
+.about-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 2;
+  color: #8C8070;
+  margin-bottom: 1.2rem;
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 2.5rem 0;
+  border-top: 1px solid rgba(140, 128, 112, 0.2);
+  border-bottom: 1px solid rgba(140, 128, 112, 0.2);
+  padding: 1.5rem 0;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  border-right: 1px solid rgba(140, 128, 112, 0.15);
+  padding: 0.5rem 0;
+}
+
+.about-stat:last-child {
+  border-right: none;
+}
+
+.about-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #C9A96E;
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8C8070;
+  text-align: center;
+}
+
+/* ============================================
+   FOOTER DU PANEL
+   ============================================ */
+.about-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.about-specialties {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.about-category {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8C8070;
+}
+
+.about-category-sep {
+  color: #C9A96E;
+  margin: 0 0.2rem;
+  font-style: italic;
+}
+
+.about-socials {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.about-social-link {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(140, 128, 112, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8C8070;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+
+.about-social-link:hover {
+  border-color: #C9A96E;
+  color: #C9A96E;
+  background: rgba(201, 169, 110, 0.06);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    min-height: 45vh;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-stat:nth-child(2) {
+    border-right: none;
+  }
+
+  .about-stat:nth-child(1),
+  .about-stat:nth-child(2) {
+    border-bottom: 1px solid rgba(140, 128, 112, 0.15);
+    padding-bottom: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .about-watermark {
+    font-size: clamp(3rem, 15vw, 6rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-panel {
+    padding: 3rem 6vw;
+  }
+
+  .about-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

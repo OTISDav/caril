@@ -1,0 +1,83 @@
+/* Grid container */
+.portfolio-grid {
+  column-count: 1;
+  column-gap: 2rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-grid {
+    column-count: 3;
+  }
+}
+
+/* Card */
+.portfolio-card {
+  position: relative;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  break-inside: avoid; /* pour éviter que les cards se cassent dans les colonnes */
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.7s ease, box-shadow 0.7s ease;
+}
+
+.portfolio-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Image */
+.portfolio-image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+/* Overlay */
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  opacity: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  transition: opacity 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Title */
+.portfolio-title {
+  color: #f5f5f5;
+  padding: 1.5rem;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+/* Skeleton card */
+.skeleton-card {
+  width: 100%;
+  height: 24rem;
+  background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
