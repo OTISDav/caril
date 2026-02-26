@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-credit">
-          Fait avec <span className="footer-heart">♥</span> par{" "}
+          Fait par{" "}
           <span className="footer-author">OTISDav</span>
         </div>
 
