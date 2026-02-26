@@ -17,14 +17,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: baseline;
-  gap: 3rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
 .footer-logo {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.6rem, 5vw, 3.2rem);
   letter-spacing: 0.3em;
   color: #F5F0E8;
   white-space: nowrap;
@@ -39,7 +39,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.9rem, 2.5vw, 1.3rem);
   color: rgba(245, 240, 232, 0.35);
   letter-spacing: 0.05em;
 }
@@ -93,7 +93,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem;
   padding: 3vh 6vw;
 }
 
@@ -148,29 +148,61 @@
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE — TABLETTE
    ============================================ */
 @media (max-width: 900px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem 6vw;
+    gap: 3rem 8vw;
   }
 }
 
+/* ============================================
+   RESPONSIVE — MOBILE
+   ============================================ */
 @media (max-width: 560px) {
+  /* Brand bar : colonne */
   .footer-brand-bar {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.6rem;
+    padding: 5vh 6vw 4vh;
   }
 
+  .footer-tagline {
+    display: none;
+  }
+
+  /* Inner : 1 colonne, compact */
   .footer-inner {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+    padding: 4vh 6vw;
   }
 
+  /* Masquer navigation et horaires sur mobile */
+  .footer-block:nth-child(3),
+  .footer-block:nth-child(4) {
+    display: none;
+  }
+
+  /* Bottom : empilé */
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.8rem;
+    padding: 3vh 6vw;
+  }
+
+  /* Masquer copyright sur mobile */
+  .footer-copy {
+    display: none;
+  }
+
+  .footer-legal {
+    gap: 0.5rem;
+  }
+
+  .footer-legal a {
+    font-size: 0.55rem;
   }
 }
