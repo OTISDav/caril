@@ -89,7 +89,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.3 }}
         >
-          <Link to="/projets" className="hero-btn-primary">
+          <Link to="/Portfolio" className="hero-btn-primary">
             Voir nos projets
           </Link>
           <Link to="/rendez-vous" className="hero-btn-ghost">
