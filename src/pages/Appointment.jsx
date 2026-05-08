@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Appointment.css";
 
 const PROJECT_TYPES = [
@@ -42,6 +43,7 @@ export default function Appointment() {
     if (name === "date") {
       const selected = new Date(value);
       const now = new Date();
+
       if (selected.toDateString() === now.toDateString()) {
         const hours = String(now.getHours()).padStart(2, "0");
         const minutes = String(now.getMinutes()).padStart(2, "0");
@@ -56,12 +58,31 @@ export default function Appointment() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setSubmitting(true);
     setSuccess("");
     setError("");
 
     try {
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          project_type: formData.project_type,
+          date: formData.date,
+          time: formData.time,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("EMAILJS SUCCESS:", result);
+
       setSuccess("Votre rendez-vous a été envoyé avec succès !");
+
       setFormData({
         name: "",
         email: "",
@@ -71,9 +92,14 @@ export default function Appointment() {
         time: "",
         message: "",
       });
+
     } catch (err) {
-      console.error(err);
-      setError("Une erreur est survenue. Veuillez réessayer.");
+      console.error("EMAILJS ERROR:", err);
+
+      setError(
+        err?.text ||
+        "Une erreur est survenue. Veuillez réessayer."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -87,43 +113,25 @@ export default function Appointment() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Watermark */}
       <div className="appointment-watermark">RDV</div>
 
-      {/* En-tête */}
       <div className="appointment-header">
-        <motion.span
-          className="appointment-label"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
+        <motion.span className="appointment-label">
           Contact
         </motion.span>
-        <motion.h1
-          className="appointment-title"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35 }}
-        >
+
+        <motion.h1 className="appointment-title">
           Prendre <em>rendez-vous</em>
         </motion.h1>
       </div>
 
-      {/* Layout 2 colonnes */}
       <div className="appointment-layout">
 
-        {/* Colonne gauche — infos */}
-        <motion.div
-          className="appointment-info"
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
+        {/* LEFT */}
+        <motion.div className="appointment-info">
           <p className="appointment-intro">
             Chaque grand projet commence par une{" "}
-            <em>conversation</em>. Rencontrons-nous pour
-            discuter de votre vision.
+            <em>conversation</em>.
           </p>
 
           <div className="appointment-contacts">
@@ -139,38 +147,32 @@ export default function Appointment() {
           </div>
 
           <div className="appointment-note">
-            <p className="appointment-note-tag">Première consultation</p>
+            <p className="appointment-note-tag">
+              Première consultation
+            </p>
             <p className="appointment-note-text">
-              Votre première consultation de 45 minutes est{" "}
-              <strong>offerte</strong>. Nous discuterons de votre projet,
-              de vos besoins et de notre méthodologie.
+              Consultation de 45 minutes <strong>offerte</strong>.
             </p>
           </div>
         </motion.div>
 
-        {/* Colonne droite — formulaire */}
-        <motion.div
-          className="appointment-form-wrap"
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
+        {/* RIGHT */}
+        <motion.div className="appointment-form-wrap">
+
           <h2 className="appointment-form-title">
             Demande de <em>rendez-vous</em>
           </h2>
 
           {success && (
-            <div className="appointment-success">
-              <span>✓</span> {success}
-            </div>
+            <div className="appointment-success">✓ {success}</div>
           )}
+
           {error && (
-            <div className="appointment-error">
-              <span>✕</span> {error}
-            </div>
+            <div className="appointment-error">✕ {error}</div>
           )}
 
           <form className="appointment-form" onSubmit={handleSubmit}>
+
             <div className="form-grid">
 
               <div className="form-group">
@@ -178,7 +180,6 @@ export default function Appointment() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Jean Dupont"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -190,7 +191,6 @@ export default function Appointment() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="jean@exemple.com"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -202,7 +202,6 @@ export default function Appointment() {
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="+228 00 00 00 00"
                   value={formData.phone}
                   onChange={handleChange}
                   required
@@ -218,8 +217,8 @@ export default function Appointment() {
                   required
                 >
                   <option value="">Sélectionner...</option>
-                  {PROJECT_TYPES.map((type, i) => (
-                    <option key={i} value={type}>
+                  {PROJECT_TYPES.map((type) => (
+                    <option key={type} value={type}>
                       {type}
                     </option>
                   ))}
@@ -227,13 +226,13 @@ export default function Appointment() {
               </div>
 
               <div className="form-group">
-                <label>Date souhaitée</label>
+                <label>Date</label>
                 <input
                   type="date"
                   name="date"
+                  min={today}
                   value={formData.date}
                   onChange={handleChange}
-                  min={today}
                   required
                 />
               </div>
@@ -243,9 +242,9 @@ export default function Appointment() {
                 <input
                   type="time"
                   name="time"
+                  min={minTime}
                   value={formData.time}
                   onChange={handleChange}
-                  min={minTime}
                   required
                 />
               </div>
@@ -253,10 +252,9 @@ export default function Appointment() {
             </div>
 
             <div className="form-group form-group-full">
-              <label>Décrivez votre projet</label>
+              <label>Message</label>
               <textarea
                 name="message"
-                placeholder="En quelques mots, parlez-nous de votre projet, de vos envies, de votre budget approximatif..."
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
@@ -266,17 +264,12 @@ export default function Appointment() {
 
             <div className="form-submit">
               <button type="submit" disabled={submitting}>
-                {submitting ? (
-                  <>
-                    <span className="btn-spinner" />
-                    Envoi en cours...
-                  </>
-                ) : (
-                  <>Envoyer la demande →</>
-                )}
+                {submitting ? "Envoi..." : "Envoyer la demande →"}
               </button>
             </div>
+
           </form>
+
         </motion.div>
       </div>
     </motion.div>
